@@ -1,6 +1,6 @@
 # food_cafe
 
-A new Flutter application.
+This is food cafe flutter application.
 
 ## Getting Started
 
