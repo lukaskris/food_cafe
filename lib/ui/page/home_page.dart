@@ -30,7 +30,7 @@ class _HomeState extends State<HomePage>
   Widget build(BuildContext context) => _renderBody(context);
 
   _renderBody(BuildContext context) {
-    return  Obx(() => Scaffold(
+    return Obx(() => Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
             elevation: 0.3,

@@ -13,8 +13,7 @@ class PendingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<PendingController>(
-        builder: (controller) => Scaffold(
+    return Scaffold(
             body: ListView.builder(
                 itemCount: _pendingController.rxPendingList.length,
                 itemBuilder: (context, index) {
@@ -38,6 +37,6 @@ class PendingPage extends StatelessWidget {
                                         .preparationTimeList),
                                 OrderStatus(orderStatus: acceptButton)
                               ])));
-                })));
+                }));
   }
 }
