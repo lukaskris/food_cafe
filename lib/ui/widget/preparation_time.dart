@@ -8,10 +8,13 @@ import 'package:line_icons/line_icons.dart';
 
 class PreparationTime extends StatelessWidget {
   final List<PreparationTimeList> preparationTimeList;
+  final PreparationTimeDefault preparationTimeDefault;
   final int index;
+
   final _pendingController = Get.put(PendingController());
 
-  PreparationTime({this.preparationTimeList, this.index});
+  PreparationTime(
+      {this.preparationTimeList, this.preparationTimeDefault, this.index});
 
   @override
   Widget build(BuildContext context) =>
@@ -25,25 +28,51 @@ class PreparationTime extends StatelessWidget {
                       child: Container(
                           padding: EdgeInsets.all(10),
                           child: Obx(() => Text(item.time.toString(),
-                              style: item.isSelect.value ? preparationTimeSelect : preparationTimeUnSelect))),
+                              style: item.isSelect.value
+                                  ? preparationTimeSelect
+                                  : preparationTimeUnSelect))),
                       onTap: () {
-                        _pendingController.preparationTimeSelect(item, index);
+                        _pendingController.preparationTimeSelect(
+                            item, preparationTimeDefault, index);
                       }))
                   .toList()),
           Row(children: [
-            Container(
-                padding: EdgeInsets.all(3),
-                decoration: preparationTimeDecoration,
-                child: Icon(LineIcons.minus, color: Colors.red, size: 12)),
+            GestureDetector(
+                onTap: () {
+                  _pendingController.timeSelectMinus(
+                      _pendingController.isTimeSelect.value
+                          ? preparationTimeDefault.selectTime.value
+                          : preparationTimeDefault.defaultTime.value,
+                      preparationTimeList,
+                      preparationTimeDefault);
+                },
+                child: Container(
+                    padding: EdgeInsets.all(3),
+                    decoration: preparationTimeDecoration,
+                    child: Icon(LineIcons.minus, color: Colors.red, size: 12))),
             SizedBox(width: 10),
-            Text('5', style: preparationTimeUnSelect),
+            Obx(() => Text(
+                _pendingController.isTimeSelect.value
+                    ? preparationTimeDefault.selectTime.toString()
+                    : preparationTimeDefault.defaultTime.toString(),
+                style: preparationTimeUnSelect)),
             SizedBox(width: 2),
-            Text('Min', style: preparationTimeMinHour),
+             Text(
+                'Min', style: preparationTimeMinHour),
             SizedBox(width: 10),
-            Container(
-                padding: EdgeInsets.all(3),
-                decoration: preparationTimeDecoration,
-                child: Icon(LineIcons.plus, color: Colors.red, size: 12))
+            GestureDetector(
+                child: Container(
+                    padding: EdgeInsets.all(3),
+                    decoration: preparationTimeDecoration,
+                    child: Icon(LineIcons.plus, color: Colors.red, size: 12)),
+                onTap: () {
+                  _pendingController.timeSelectPlus(
+                      _pendingController.isTimeSelect.value
+                          ? preparationTimeDefault.selectTime.value
+                          : preparationTimeDefault.defaultTime.value,
+                      preparationTimeList,
+                      preparationTimeDefault);
+                })
           ])
         ]),
         SizedBox(height: 20)

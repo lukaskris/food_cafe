@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class PendingController extends GetxController {
   RxList<PendingList> rxPendingList;
+  RxBool isTimeSelect = false.obs;
 
   @override
   onInit() {
@@ -29,6 +30,8 @@ class PendingController extends GetxController {
             PreparationTimeList(time: 50, isSelect: false),
             PreparationTimeList(time: 60, isSelect: false),
           ],
+          preparationTimeDefault: PreparationTimeDefault(
+              defaultTime: 5, selectTime: 0, isMinHour: 1),
           otherChargeList: [
             OtherChargeList(name: 'GST', chargeAmount: 200),
             OtherChargeList(name: 'Delivery charge', chargeAmount: 100),
@@ -55,16 +58,72 @@ class PendingController extends GetxController {
     rxPendingList = PendingResponse(pendingList: pendingList).pendingList.obs;
   }
 
-  void preparationTimeSelect(
-      PreparationTimeList preparationTimeList, int index) {
+  void preparationTimeSelect(PreparationTimeList preparationTimeList,
+      PreparationTimeDefault preparationTimeDefault, int index) {
     if (preparationTimeList.isSelect.value) {
       preparationTimeList.isSelect.value = false;
+      isTimeSelect.value = false;
+      preparationTimeDefault.selectTime.value = 0;
     } else {
       for (var preparationTime in rxPendingList[index].preparationTimeList) {
         preparationTime.isSelect.value = false;
       }
 
       preparationTimeList.isSelect.value = !preparationTimeList.isSelect.value;
+      preparationTimeDefault.selectTime.value = preparationTimeList.time.value;
+      isTimeSelect.value = preparationTimeList.isSelect.value;
+    }
+  }
+
+  void timeSelectPlus(int time, List<PreparationTimeList> preparationTimeList,
+      PreparationTimeDefault preparationTimeDefault) {
+    isTimeSelect.value = true;
+    preparationTimeDefault.selectTime.value = time + 5;
+
+    if (preparationTimeDefault.selectTime.value % 10 == 0) {
+      for (var preparationTime in preparationTimeList) {
+        preparationTime.isSelect.value = false;
+      }
+
+      preparationTimeList[int.parse(
+                  (preparationTimeDefault.selectTime.value / 10)
+                      .toStringAsFixed(0)) -
+              1]
+          .isSelect
+          .value = true;
+    } else {
+      for (var preparationTime in preparationTimeList) {
+        preparationTime.isSelect.value = false;
+      }
+    }
+  }
+
+  void timeSelectMinus(
+    int time,
+    List<PreparationTimeList> preparationTimeList,
+    PreparationTimeDefault preparationTimeDefault,
+  ) {
+    isTimeSelect.value = true;
+    if (time != 0) {
+      preparationTimeDefault.selectTime.value = time - 5;
+
+      if (preparationTimeDefault.selectTime.value > 0)
+        preparationTimeList[int.parse(
+                    (preparationTimeDefault.selectTime.value / 10)
+                        .toStringAsFixed(0)) -
+                1]
+            .isSelect
+            .value = true;
+
+      if (preparationTimeDefault.selectTime.value % 10 == 0) {
+        for (var preparationTime in preparationTimeList) {
+          preparationTime.isSelect.value = false;
+        }
+      } else {
+        for (var preparationTime in preparationTimeList) {
+          preparationTime.isSelect.value = false;
+        }
+      }
     }
   }
 }

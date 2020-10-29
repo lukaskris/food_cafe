@@ -7,6 +7,7 @@ class PendingList {
 
   List<OrderList> orderList;
   List<PreparationTimeList> preparationTimeList;
+  PreparationTimeDefault preparationTimeDefault;
   List<OtherChargeList> otherChargeList;
   DeliveryPersonDetail deliveryPersonDetail;
 
@@ -20,6 +21,7 @@ class PendingList {
       this.otherCharge,
       this.orderList,
       this.preparationTimeList,
+      this.preparationTimeDefault,
       this.otherChargeList,
       this.deliveryPersonDetail});
 }
@@ -36,6 +38,23 @@ class OrderList {
       this.quantity,
       this.price,
       this.orderType});
+}
+
+class PreparationTimeDefault {
+  PreparationTimeDefault({int defaultTime, int selectTime, int isMinHour}) {
+    this.setDefaultTime(defaultTime);
+    this.setSelectTime(selectTime);
+    this.setIsMinHour(isMinHour);
+  }
+
+  RxInt defaultTime = RxInt(null);
+  setDefaultTime(int value) => defaultTime.value = value;
+
+  RxInt selectTime = RxInt(null);
+  setSelectTime(int value) => selectTime.value = value;
+
+  RxInt isMinHour = RxInt(null);
+  setIsMinHour(int value) => isMinHour.value = value;
 }
 
 class PreparationTimeList extends GetxController {

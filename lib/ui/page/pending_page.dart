@@ -32,6 +32,7 @@ class PendingPage extends StatelessWidget {
                                     otherChargeList: _pendingController.rxPendingList[index].otherChargeList),
                                 PreparationTime(
                                     index: index,
+                                    preparationTimeDefault: _pendingController.rxPendingList[index].preparationTimeDefault,
                                     preparationTimeList: _pendingController
                                         .rxPendingList[index]
                                         .preparationTimeList),
