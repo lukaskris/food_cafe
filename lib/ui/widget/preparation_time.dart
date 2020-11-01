@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_cafe/controller/pending_controller.dart';
-import 'package:food_cafe/model/peding/pending.dart';
+import 'package:food_cafe/model/order/order.dart';
 import 'package:food_cafe/resource/style.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';

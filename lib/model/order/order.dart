@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class PendingList {
+class OrderMainList {
   String uniqueId, dateTime, typeDelivery, paymentType;
   int totalQuantity;
   double totalAmount, otherCharge;
@@ -11,7 +11,7 @@ class PendingList {
   List<OtherChargeList> otherChargeList;
   DeliveryPersonDetail deliveryPersonDetail;
 
-  PendingList(
+  OrderMainList(
       {this.uniqueId,
       this.dateTime,
       this.typeDelivery,

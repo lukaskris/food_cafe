@@ -1,9 +1,9 @@
-import 'package:food_cafe/model/peding/pending.dart';
-import 'package:food_cafe/model/peding/pending_response.dart';
+import 'package:food_cafe/model/order/order.dart';
+import 'package:food_cafe/model/order/order_response.dart';
 import 'package:get/get.dart';
 
 class ReadyController extends GetxController {
-  RxList<PendingList> rxReadyList;
+  RxList<OrderMainList> rxReadyList;
 
   @override
   onInit() {
@@ -12,8 +12,8 @@ class ReadyController extends GetxController {
   }
 
   void fetchReady() {
-    List<PendingList> pendingList = [
-      PendingList(
+    List<OrderMainList> orderMainList = [
+      OrderMainList(
           uniqueId: 'FCO2021',
           dateTime: '15-10-2020 - 3:17 PM',
           typeDelivery: 'Home delivery',
@@ -52,7 +52,7 @@ class ReadyController extends GetxController {
           ])
     ];
 
-    rxReadyList = PendingResponse(pendingList: pendingList).pendingList.obs;
+    rxReadyList = PendingResponse(orderMainList: orderMainList).orderMainList.obs;
   }
 
   void removeOrder(String orderId) {

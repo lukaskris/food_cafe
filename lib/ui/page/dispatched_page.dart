@@ -28,7 +28,7 @@ class DispatchedPage extends StatelessWidget {
                           children: [
                             OrderDetail(
                                 infoKey: _infoKey[index],
-                                pending: _dispatchedController
+                                orderMainList: _dispatchedController
                                     .rxDispatchedList[index],
                                 orderList: _dispatchedController
                                     .rxDispatchedList[index].orderList,

@@ -1,9 +1,9 @@
-import 'package:food_cafe/model/peding/pending.dart';
-import 'package:food_cafe/model/peding/pending_response.dart';
+import 'package:food_cafe/model/order/order.dart';
+import 'package:food_cafe/model/order/order_response.dart';
 import 'package:get/get.dart';
 
 class PendingController extends GetxController {
-  RxList<PendingList> rxPendingList;
+  RxList<OrderMainList> rxPendingList;
   RxBool isTimeSelect = false.obs;
 
   @override
@@ -13,8 +13,8 @@ class PendingController extends GetxController {
   }
 
   void fetchPending() {
-    List<PendingList> pendingList = [
-      PendingList(
+    List<OrderMainList> orderMainList = [
+      OrderMainList(
           uniqueId: 'FCO2021',
           dateTime: '15-10-2020 - 3:17 PM',
           typeDelivery: 'Home delivery',
@@ -53,7 +53,7 @@ class PendingController extends GetxController {
                 price: 2000,
                 orderType: 2)
           ]),
-      PendingList(
+      OrderMainList(
           uniqueId: 'FCO2022',
           dateTime: '15-10-2020 - 3:17 PM',
           typeDelivery: 'Home delivery',
@@ -94,7 +94,7 @@ class PendingController extends GetxController {
           ])
     ];
 
-    rxPendingList = PendingResponse(pendingList: pendingList).pendingList.obs;
+    rxPendingList = PendingResponse(orderMainList: orderMainList).orderMainList.obs;
   }
 
   void preparationTimeSelect(PreparationTimeList preparationTimeList,

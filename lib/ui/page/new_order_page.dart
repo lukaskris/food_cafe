@@ -37,7 +37,7 @@ class NewOrderPage extends StatelessWidget {
                           children: [
                             OrderDetail(
                                 infoKey: _infoKey[index],
-                                pending: _newOrderController.rxNewOrderList[index],
+                                orderMainList: _newOrderController.rxNewOrderList[index],
                                 orderList: _newOrderController
                                     .rxNewOrderList[index].orderList,
                                 otherChargeList: _newOrderController

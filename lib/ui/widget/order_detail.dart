@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_cafe/model/peding/pending.dart';
+import 'package:food_cafe/model/order/order.dart';
 import 'package:food_cafe/resource/font.dart';
 import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/resource/value.dart';
@@ -11,21 +11,21 @@ import 'popup_window.dart';
 class OrderDetail extends StatelessWidget {
   final GlobalKey infoKey;
   final List<OrderList> orderList;
-  final PendingList pending;
+  final OrderMainList orderMainList;
   final List<OtherChargeList> otherChargeList;
 
   OrderDetail(
-      {this.infoKey, this.orderList, this.pending, this.otherChargeList});
+      {this.infoKey, this.orderList, this.orderMainList, this.otherChargeList});
 
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(pending.uniqueId, style: id),
-        Text(pending.dateTime, style: dateTime)
+        Text(orderMainList.uniqueId, style: id),
+        Text(orderMainList.dateTime, style: dateTime)
       ]),
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(pending.typeDelivery, style: deliveryType),
+        Text(orderMainList.typeDelivery, style: deliveryType),
         Text('10 min ago', style: timeCalculation)
       ]),
       SizedBox(height: 5),
@@ -70,7 +70,7 @@ class OrderDetail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                    Text(pending.paymentType, style: paymentPaidStatus),
+                    Text(orderMainList.paymentType, style: paymentPaidStatus),
                     SizedBox(width: 3),
                     Text('(Collect)', style: paymentCollect)
                   ]),
@@ -130,7 +130,7 @@ class OrderDetail extends StatelessWidget {
                                                   fontSize: 12,
                                                   fontFamily:
                                                   mediumFont)),
-                                          Text('\u20B9 ' + pending.otherCharge.toString(),
+                                          Text('\u20B9 ' + orderMainList.otherCharge.toString(),
                                               style: TextStyle(
                                                   color:
                                                   Colors.black,
@@ -149,13 +149,13 @@ class OrderDetail extends StatelessWidget {
             flex: 700,
             child: Row(children: [
               Text('X', style: quantitySymbol),
-              Text(pending.totalQuantity.toString(), style: quantity)
+              Text(orderMainList.totalQuantity.toString(), style: quantity)
             ])),
         Flexible(
             flex: 0,
             child: Text(
                 '\u20B9 ' +
-                    (pending.totalAmount + pending.otherCharge).toString(),
+                    (orderMainList.totalAmount + orderMainList.otherCharge).toString(),
                 style: totalAmount))
       ])
     ]);

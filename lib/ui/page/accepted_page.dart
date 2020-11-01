@@ -27,7 +27,7 @@ class AcceptedPage extends StatelessWidget {
                           children: [
                             OrderDetail(
                                 infoKey: _infoKey[index],
-                                pending:
+                                orderMainList:
                                     _acceptedController.rxAcceptedList[index],
                                 orderList: _acceptedController
                                     .rxAcceptedList[index].orderList,

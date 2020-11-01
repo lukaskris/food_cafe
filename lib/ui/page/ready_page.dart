@@ -28,7 +28,7 @@ class ReadyPage extends StatelessWidget {
                           children: [
                             OrderDetail(
                                 infoKey: _infoKey[index],
-                                pending: _readyController.rxReadyList[index],
+                                orderMainList: _readyController.rxReadyList[index],
                                 orderList: _readyController
                                     .rxReadyList[index].orderList,
                                 otherChargeList: _readyController

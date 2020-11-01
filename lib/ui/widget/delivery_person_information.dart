@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:food_cafe/model/peding/pending.dart';
+import 'package:food_cafe/model/order/order.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/style.dart';
 

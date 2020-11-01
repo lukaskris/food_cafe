@@ -27,7 +27,7 @@ class PendingPage extends StatelessWidget {
                           children: [
                             OrderDetail(
                                 infoKey: _infoKey[index],
-                                pending:
+                                orderMainList:
                                     _pendingController.rxPendingList[index],
                                 orderList: _pendingController
                                     .rxPendingList[index].orderList,
