@@ -14,30 +14,41 @@ class PendingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            body: ListView.builder(
-                itemCount: _pendingController.rxPendingList.length,
-                itemBuilder: (context, index) {
-                  _infoKey.add(GlobalKey(debugLabel: index.toString()));
-                  return Card(
-                      elevation: cardViewElevation,
-                      child: Container(
-                          margin: EdgeInsets.all(10),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                OrderDetail(
-                                    infoKey: _infoKey[index],
-                                    pending: _pendingController.rxPendingList[index],
-                                    orderList: _pendingController.rxPendingList[index].orderList,
-                                    otherChargeList: _pendingController.rxPendingList[index].otherChargeList),
-                                PreparationTime(
-                                    index: index,
-                                    preparationTimeDefault: _pendingController.rxPendingList[index].preparationTimeDefault,
-                                    preparationTimeList: _pendingController
-                                        .rxPendingList[index]
-                                        .preparationTimeList),
-                                OrderStatus(orderStatus: acceptButton)
-                              ])));
-                }));
+        body: Obx(() => ListView.builder(
+            itemCount: _pendingController.rxPendingList.length,
+            itemBuilder: (context, index) {
+              _infoKey.add(GlobalKey(debugLabel: index.toString()));
+              return Card(
+                  elevation: cardViewElevation,
+                  child: Container(
+                      margin: EdgeInsets.all(10),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            OrderDetail(
+                                infoKey: _infoKey[index],
+                                pending:
+                                    _pendingController.rxPendingList[index],
+                                orderList: _pendingController
+                                    .rxPendingList[index].orderList,
+                                otherChargeList: _pendingController
+                                    .rxPendingList[index].otherChargeList),
+                            PreparationTime(
+                                index: index,
+                                preparationTimeDefault: _pendingController
+                                    .rxPendingList[index]
+                                    .preparationTimeDefault,
+                                preparationTimeList: _pendingController
+                                    .rxPendingList[index].preparationTimeList),
+                            OrderStatus(
+                                orderStatus: acceptButton,
+                                rejectCallBack: () => _pendingController
+                                    .removeOrder(_pendingController
+                                        .rxPendingList[index].uniqueId),
+                                orderCallBack: () => _pendingController
+                                    .removeOrder(_pendingController
+                                        .rxPendingList[index].uniqueId))
+                          ])));
+            })));
   }
 }
