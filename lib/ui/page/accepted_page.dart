@@ -14,8 +14,7 @@ class AcceptedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GetBuilder<AcceptedController>(
-        builder: (controller) => ListView.builder(
+        body: Obx(() => ListView.builder(
             itemCount: _acceptedController.rxAcceptedList.length,
             itemBuilder: (context, index) {
               _infoKey.add(GlobalKey(debugLabel: index.toString()));
@@ -28,11 +27,24 @@ class AcceptedPage extends StatelessWidget {
                           children: [
                             OrderDetail(
                                 infoKey: _infoKey[index],
-                                pending: _acceptedController.rxAcceptedList[index],
-                                orderList: _acceptedController.rxAcceptedList[index].orderList,
-                                otherChargeList: _acceptedController.rxAcceptedList[index].otherChargeList),
-                            DeliveryPersonInformation(deliveryPersonDetail : _acceptedController.rxAcceptedList[index].deliveryPersonDetail),
-                            OrderStatus(orderStatus: foodReadyButton),
+                                pending:
+                                    _acceptedController.rxAcceptedList[index],
+                                orderList: _acceptedController
+                                    .rxAcceptedList[index].orderList,
+                                otherChargeList: _acceptedController
+                                    .rxAcceptedList[index].otherChargeList),
+                            DeliveryPersonInformation(
+                                deliveryPersonDetail: _acceptedController
+                                    .rxAcceptedList[index]
+                                    .deliveryPersonDetail),
+                            OrderStatus(
+                                orderStatus: foodReadyButton,
+                                rejectCallBack: () => _acceptedController
+                                    .removeOrder(_acceptedController
+                                        .rxAcceptedList[index].uniqueId),
+                                orderCallBack: () => _acceptedController
+                                    .removeOrder(_acceptedController
+                                        .rxAcceptedList[index].uniqueId))
                           ])));
             })));
   }

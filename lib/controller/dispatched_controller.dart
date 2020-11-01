@@ -131,4 +131,10 @@ class DispatchedController extends GetxController {
 
     rxDispatchedList = PendingResponse(pendingList: pendingList).pendingList.obs;
   }
+
+  void removeOrder(String orderId) {
+    int indexGet =
+    rxDispatchedList.indexWhere((element) => element.uniqueId == orderId);
+    rxDispatchedList.removeAt(indexGet);
+  }
 }

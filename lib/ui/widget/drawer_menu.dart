@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_cafe/controller/home_controller.dart';
+import 'package:food_cafe/resource/images.dart';
 import 'package:food_cafe/resource/routes.dart';
 import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/resource/value.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:recase/recase.dart';
 
 class DrawerMenu extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
@@ -16,12 +18,13 @@ class DrawerMenu extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(children: [
       ListTile(
-          leading: CircleAvatar(),
-          title: Text('Lakhani Kamlesh', style: drawerUserNameStyle),
-          subtitle: Text('kamal.lakhani56@gmail.com', style: drawerEmailStyle),
-          onTap: () {
-            Get.back();
-          }),
+          leading: CircleAvatar(
+            backgroundColor: Colors.grey.withOpacity(0.2),
+            backgroundImage: AssetImage(profileImage),
+          ),
+          title: Text(developerName.titleCase, style: drawerUserNameStyle),
+          subtitle: Text(developerEmail.toLowerCase(), style: drawerEmailStyle),
+          onTap: () => Get.back()),
       ListTile(
           leading: Icon(LineIcons.pause, size: 16),
           title: Text('Pause Menu', style: drawerMenuStyle),

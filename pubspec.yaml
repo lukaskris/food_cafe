@@ -17,6 +17,7 @@ dependencies:
   line_icons:
   dotted_border:
   flutter_dash:
+  recase:
 
   supercharged:
   flutter_map_marker_popup:

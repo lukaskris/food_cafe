@@ -7,6 +7,7 @@ class PastOrderController extends GetxController {
 
   @override
   void onInit() {
+    super.onInit();
     selectOrder.value = pastOrderList[0];
   }
 }

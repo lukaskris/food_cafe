@@ -41,4 +41,10 @@ class AcceptedController extends GetxController {
 
     rxAcceptedList = PendingResponse(pendingList: pendingList).pendingList.obs;
   }
+
+  void removeOrder(String orderId) {
+    int indexGet =
+    rxAcceptedList.indexWhere((element) => element.uniqueId == orderId);
+    rxAcceptedList.removeAt(indexGet);
+  }
 }

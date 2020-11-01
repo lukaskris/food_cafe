@@ -14,7 +14,7 @@ class DispatchedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
+        body: Obx(() => ListView.builder(
             itemCount: _dispatchedController.rxDispatchedList.length,
             itemBuilder: (context, index) {
               _infoKey.add(GlobalKey(debugLabel: index.toString()));
@@ -40,15 +40,19 @@ class DispatchedPage extends StatelessWidget {
                                     .deliveryPersonDetail),
                             Align(
                                 alignment: Alignment.bottomRight,
-                                child: Container(
-                                    decoration: new BoxDecoration(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0)),
-                                    padding: EdgeInsets.all(3),
-                                    child: Text(settleOrderButton,
-                                        style: orderStatusStyle)))
+                                child: GestureDetector(
+                                    onTap: () => _dispatchedController
+                                        .removeOrder(_dispatchedController
+                                            .rxDispatchedList[index].uniqueId),
+                                    child: Container(
+                                        decoration: new BoxDecoration(
+                                            color: Colors.grey.withOpacity(0.1),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0)),
+                                        padding: EdgeInsets.all(3),
+                                        child: Text(settleOrderButton,
+                                            style: orderStatusStyle))))
                           ])));
-            }));
+            })));
   }
 }

@@ -32,6 +32,9 @@ const String halfOrderType = '(Half)';
 const int fullOrderTypeApi = 1;
 const int halfOrderTypeApi = 2;
 
+const developerName = 'Lakhani Kamlesh';
+const developerEmail = 'kamal.lakhani56@gmail.com';
+
 const pendingIndex = 0;
 const acceptedIndex = 1;
 const readyIndex = 2;

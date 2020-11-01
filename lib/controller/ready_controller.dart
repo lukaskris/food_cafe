@@ -54,4 +54,10 @@ class ReadyController extends GetxController {
 
     rxReadyList = PendingResponse(pendingList: pendingList).pendingList.obs;
   }
+
+  void removeOrder(String orderId) {
+    int indexGet =
+    rxReadyList.indexWhere((element) => element.uniqueId == orderId);
+    rxReadyList.removeAt(indexGet);
+  }
 }

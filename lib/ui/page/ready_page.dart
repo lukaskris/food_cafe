@@ -14,7 +14,7 @@ class ReadyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
+        body: Obx(() => ListView.builder(
             itemCount: _readyController.rxReadyList.length,
             itemBuilder: (context, index) {
               _infoKey.add(GlobalKey(debugLabel: index.toString()));
@@ -37,9 +37,12 @@ class ReadyPage extends StatelessWidget {
                                 deliveryPersonDetail: _readyController
                                     .rxReadyList[index].deliveryPersonDetail),
                             OrderStatus(
+                                orderCallBack: () => _readyController
+                                    .removeOrder(_readyController
+                                        .rxReadyList[index].uniqueId),
                                 orderStatus: dispatchButton,
                                 isRejectShow: false),
                           ])));
-            }));
+            })));
   }
 }
