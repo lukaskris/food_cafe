@@ -4,7 +4,7 @@ import 'package:food_cafe/utils/state_status.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  StateStatus stateStatus = StateStatus.INITIAL;
+  Rx<StateStatus> stateStatus = StateStatus.INITIAL.obs;
 
   String _email = '', _password = '';
 
@@ -28,9 +28,9 @@ class LoginController extends GetxController {
   }
 
   Future<void> callLogin() async {
-    stateStatus = StateStatus.LOADING;
+    stateStatus.value = StateStatus.LOADING;
 
-    stateStatus = StateStatus.SUCCESS;
+    stateStatus.value = StateStatus.SUCCESS;
 
     Get.offNamed(homeRoute);
   }

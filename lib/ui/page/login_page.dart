@@ -73,7 +73,7 @@ class _LoginState extends State<LoginPage> {
 
   _loginPress() => Align(alignment: Alignment.bottomCenter).customFloatForm(
       color: appBarTitleColor,
-      stateStatus: _loginController.stateStatus,
+      stateStatus: _loginController.stateStatus.value,
       icon: Icons.navigate_next,
       isMini: false,
       qrCallback: () => _loginValidate());
