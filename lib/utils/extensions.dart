@@ -1,6 +1,8 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/font.dart';
+import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/ui/widget/icon_shadow.dart';
 import 'state_status.dart';
 
@@ -28,7 +30,21 @@ extension ContextExtensions on BuildContext {
     Navigator.pop(this);
   }
 
-  void toast(String message, IconData icon) {}
+  void toast({String message}) {
+    Flushbar(
+      boxShadows: [
+        BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            offset: Offset(0.0, 0.0),
+            blurRadius: 0.0)
+      ],
+      margin: EdgeInsets.all(0),
+      borderRadius: 0,
+      backgroundColor: backgroundColor,
+      messageText: Text(message, style: flushBarMessageStyle),
+      duration: Duration(seconds: 3),
+    )..show(this);
+  }
 }
 
 extension ValiationExtensions on String {
@@ -91,15 +107,19 @@ extension WidgetExtensions on Widget {
               focusedBorder: UnderlineInputBorder(
                   borderSide:
                       const BorderSide(color: Colors.black, width: 1.0)),
-
               errorStyle: TextStyle(fontFamily: regularFont, color: Colors.red),
-              hintStyle: TextStyle(fontFamily: regularFont, color: Colors.black),
-              labelStyle: TextStyle(fontFamily: regularFont, color: Colors.black),
-              suffixStyle: TextStyle(fontFamily: regularFont, color: Colors.black),
-              prefixStyle: TextStyle(fontFamily: regularFont, color: Colors.black),
-              counterStyle: TextStyle(fontFamily: regularFont, color: Colors.black),
-              helperStyle: TextStyle(fontFamily: regularFont, color: Colors.black),
-
+              hintStyle:
+                  TextStyle(fontFamily: regularFont, color: Colors.black),
+              labelStyle:
+                  TextStyle(fontFamily: regularFont, color: Colors.black),
+              suffixStyle:
+                  TextStyle(fontFamily: regularFont, color: Colors.black),
+              prefixStyle:
+                  TextStyle(fontFamily: regularFont, color: Colors.black),
+              counterStyle:
+                  TextStyle(fontFamily: regularFont, color: Colors.black),
+              helperStyle:
+                  TextStyle(fontFamily: regularFont, color: Colors.black),
               hintText: hintText,
               counterText: '',
               labelText: labelText,
@@ -175,7 +195,11 @@ extension WidgetExtensions on Widget {
           decoration:
               BoxDecoration(shape: BoxShape.circle, color: backgroundColor),
           child: RawMaterialButton(
-              shape: CircleBorder(), onPressed: voidCallback, child: IconShadowWidget(icon, )));
+              shape: CircleBorder(),
+              onPressed: voidCallback,
+              child: IconShadowWidget(
+                icon,
+              )));
 
   roundCircleButton(
           {IconData iconData,

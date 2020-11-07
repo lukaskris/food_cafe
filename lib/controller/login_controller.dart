@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:food_cafe/resource/api.dart';
 import 'package:food_cafe/resource/routes.dart';
 import 'package:food_cafe/resource/value.dart';
@@ -45,42 +46,49 @@ class LoginController extends GetxController {
   Future<void> callLogin() async {
     stateStatus.value = StateStatus.LOADING;
 
-    _localAuthRepository.setSession(SECURE_STORAGE_USERNAME, developerName);
+   /* _localAuthRepository.setSession(SECURE_STORAGE_USERNAME, developerName);
     _localAuthRepository.setSession(SECURE_STORAGE_EMAIL, developerEmail);
     _localAuthRepository.setSession(SECURE_STORAGE_PROFILE_URL, '');
     _localAuthRepository.setSession(SECURE_STORAGE_TOKEN, '');
     _localAuthRepository.setSession(SECURE_STORAGE_USER_ID, '');
-
+*/
     stateStatus.value = StateStatus.SUCCESS;
-
-    Get.offNamed(homeRoute);
+    Get.context.toast(message: 'Email or Password invalid');
+   // Get.offNamed(homeRoute);
   }
 
   Future<void> callGoogleLogin() async {
     final GoogleSignInAccount googleSignInAccount =
         await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+    if (googleSignInAccount != null) {
+      stateStatus.value = StateStatus.LOADING;
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken,
-    );
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
 
-    final UserCredential authResult =
-        await _firebaseAuth.signInWithCredential(credential);
-    final User user = authResult.user;
+      final UserCredential authResult =
+          await _firebaseAuth.signInWithCredential(credential);
+      final User user = authResult.user;
 
-    if (user != null) {
-      final User user = _firebaseAuth.currentUser;
+      if (user != null) {
+        final User user = _firebaseAuth.currentUser;
 
-      _localAuthRepository.setSession(SECURE_STORAGE_USERNAME, user.displayName);
-      _localAuthRepository.setSession(SECURE_STORAGE_EMAIL, user.email);
-      _localAuthRepository.setSession(SECURE_STORAGE_PROFILE_URL, user.photoURL);
-      _localAuthRepository.setSession(SECURE_STORAGE_TOKEN, user.refreshToken);
-      _localAuthRepository.setSession(SECURE_STORAGE_USER_ID, user.uid);
+        _localAuthRepository.setSession(
+            SECURE_STORAGE_USERNAME, user.displayName);
+        _localAuthRepository.setSession(SECURE_STORAGE_EMAIL, user.email);
+        _localAuthRepository.setSession(
+            SECURE_STORAGE_PROFILE_URL, user.photoURL);
+        _localAuthRepository.setSession(
+            SECURE_STORAGE_TOKEN, user.refreshToken);
+        _localAuthRepository.setSession(SECURE_STORAGE_USER_ID, user.uid);
 
-      Get.offNamed(homeRoute);
+        stateStatus.value = StateStatus.SUCCESS;
+        Get.offNamed(homeRoute);
+      }
     }
   }
 
@@ -97,9 +105,7 @@ class LoginController extends GetxController {
       secureStorageProfileURL.value = value;
     });
 
-    await _localAuthRepository
-        .getSession(SECURE_STORAGE_EMAIL)
-        .then((value) {
+    await _localAuthRepository.getSession(SECURE_STORAGE_EMAIL).then((value) {
       secureStorageEmail.value = value;
     });
   }

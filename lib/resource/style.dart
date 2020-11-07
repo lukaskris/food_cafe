@@ -7,6 +7,8 @@ var appBarTitleStyle = TextStyle(fontSize: 18, color: appBarTitleColor, fontFami
 var appBarAddressStyle = TextStyle(fontSize: 12, color: appBarAddressColor, fontFamily: mediumFont);
 var countStyle = TextStyle(fontSize: 8, color: countColor, fontFamily: mediumFont);
 
+var flushBarMessageStyle = TextStyle(fontSize: 15, color: Colors.black, fontFamily: mediumFont);
+
 doNotHaveAccountStyle(Color color) => TextStyle(fontSize: 15.0, color: color, fontFamily: regularFont);
 loginLinkStyle(Color color) => TextStyle(fontSize: 15.0, fontFamily: mediumFont, color: color);
 

@@ -26,31 +26,31 @@ class _LoginState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) => FancyBackground(
-          child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: new Form(
-                  key: _key,
-                  child: ListView(children: [_formUI()]))));
+      child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Form(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              key: _key,
+              child: ListView(children: [_formUI()]))));
 
   _formUI() => Obx(() => Container(
-        padding: EdgeInsets.all(20),
-        child: Column(children: <Widget>[
-          widget.size(heightScale: 100.0),
-          _formIcon(),
-          widget.size(heightScale: 30.0),
-          _emailInput(),
-          _passwordInput(),
-          widget.size(heightScale: 20.0),
-          _loginPress(),
-          SizedBox(height: 10.0),
-          _login()
-        ])));
+      padding: EdgeInsets.all(20),
+      child: Column(children: <Widget>[
+        widget.size(heightScale: 100.0),
+        _formIcon(),
+        widget.size(heightScale: 30.0),
+        _emailInput(),
+        _passwordInput(),
+        widget.size(heightScale: 20.0),
+        _loginPress(),
+        SizedBox(height: 10.0),
+        _login()
+      ])));
 
   _login() => Column(children: <Widget>[
         RawMaterialButton(
             padding: const EdgeInsets.all(10),
-            child:
-                Text(linkForgotPassword, style: loginLinkStyle(linkColor)),
+            child: Text(linkForgotPassword, style: loginLinkStyle(linkColor)),
             onPressed: () {}),
         SizedBox(height: 30.0),
         SizedBox(height: 10.0),
@@ -79,12 +79,13 @@ class _LoginState extends State<LoginPage> {
       qrCallback: () => _loginValidate());
 
   _loginValidate() {
+    FocusScope.of(context).requestFocus(FocusNode());
+
     if (_key.currentState.validate()) {
       _key.currentState.save();
       _loginController.callLogin();
     } else {
-      _loginController.callLogin();
-      //_loginController.checkAutoValidate();
+      _loginController.checkAutoValidate();
     }
   }
 
@@ -98,8 +99,7 @@ class _LoginState extends State<LoginPage> {
             voidCallback: () => _loginController.callGoogleLogin()),
         SizedBox(width: 30),
         widget.socialIcon(
-            icon:
-                Icon(LineIcons.facebook, color: Colors.white, size: 25),
+            icon: Icon(LineIcons.facebook, color: Colors.white, size: 25),
             backgroundColor: Colors.blue,
             voidCallback: () {}),
       ]));

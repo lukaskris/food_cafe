@@ -51,6 +51,8 @@ class _HomeState extends State<HomePage>
             ],
             leading: IconButton(
                 onPressed: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
+
                   bottomSheetCustom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(

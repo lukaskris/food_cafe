@@ -24,6 +24,7 @@ dependencies:
   google_sign_in:
   flutter_secure_storage:
   cached_network_image:
+  flushbar:
 
 dev_dependencies:
   flutter_test:
