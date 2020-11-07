@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_cafe/controller/home_controller.dart';
+import 'package:food_cafe/controller/login_controller.dart';
 import 'package:food_cafe/resource/images.dart';
 import 'package:food_cafe/resource/routes.dart';
 import 'package:food_cafe/resource/style.dart';
@@ -10,8 +11,15 @@ import 'package:recase/recase.dart';
 
 class DrawerMenu extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
+  final LoginController _loginController = Get.put(LoginController());
 
-  DrawerMenu({Key key}) : super(key: key);
+  final String userName, email, profileURL;
+  DrawerMenu(
+      {@required this.userName,
+      @required this.email,
+      @required this.profileURL,
+      Key key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +27,12 @@ class DrawerMenu extends StatelessWidget {
         child: Column(children: [
       ListTile(
           leading: CircleAvatar(
-            backgroundColor: Colors.grey.withOpacity(0.2),
-            backgroundImage: AssetImage(profileImage),
-          ),
-          title: Text(developerName.titleCase, style: drawerUserNameStyle),
-          subtitle: Text(developerEmail.toLowerCase(), style: drawerEmailStyle),
+              backgroundColor: Colors.grey.withOpacity(0.1),
+              backgroundImage: profileURL.isEmpty
+                  ? ExactAssetImage(profileImage)
+                  : NetworkImage(profileURL)),
+          title: Text(userName.titleCase, style: drawerUserNameStyle),
+          subtitle: Text(email.toLowerCase(), style: drawerEmailStyle),
           onTap: () => Get.back()),
       ListTile(
           leading: Icon(LineIcons.pause, size: 16),
@@ -62,7 +71,7 @@ class DrawerMenu extends StatelessWidget {
       ListTile(
           leading: Icon(LineIcons.lock, size: 16),
           title: Text('Logout', style: drawerMenuStyle),
-          onTap: () => Get.offAllNamed(loginRoute))
+          onTap: () => _loginController.logout())
     ]));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_cafe/controller/home_controller.dart';
+import 'package:food_cafe/controller/login_controller.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/images.dart';
 import 'package:food_cafe/resource/style.dart';
@@ -23,8 +24,14 @@ class HomePage extends StatefulWidget {
 class _HomeState extends State<HomePage>
     with WidgetsBindingObserver, SingleTickerProviderStateMixin {
   final HomeController _homeController = Get.put(HomeController());
+  final LoginController _loginController = Get.put(LoginController());
 
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) => _renderBody(context);
@@ -53,7 +60,13 @@ class _HomeState extends State<HomePage>
                       isDismissible: true,
                       backgroundColor: backgroundColor,
                       context: context,
-                      builder: (context) => DrawerMenu());
+                      builder: (context) => Obx(() => DrawerMenu(
+                            userName:
+                                _loginController.secureStorageUserName.value,
+                            email: _loginController.secureStorageEmail.value,
+                            profileURL:
+                                _loginController.secureStorageProfileURL.value,
+                          )));
                 },
                 icon: Icon(navigationIcon, size: 18, color: appBarTitleColor)),
             title: Column(children: [Text(appName, style: appBarTitleStyle)])),

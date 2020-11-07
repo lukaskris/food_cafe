@@ -95,7 +95,7 @@ class _LoginState extends State<LoginPage> {
         widget.socialIcon(
             icon: Icon(LineIcons.google, color: Colors.white, size: 25),
             backgroundColor: Colors.red,
-            voidCallback: () {}),
+            voidCallback: () => _loginController.callGoogleLogin()),
         SizedBox(width: 30),
         widget.socialIcon(
             icon:

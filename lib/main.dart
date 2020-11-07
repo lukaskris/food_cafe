@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_cafe/dependency_injection.dart';
 import 'package:get/get.dart';
 import 'app_module.dart';
 import 'resource/colors.dart';
@@ -15,6 +17,8 @@ void main() async {
       systemNavigationBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.white));
 
+  DependencyInjection.init();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

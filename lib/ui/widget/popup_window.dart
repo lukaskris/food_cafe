@@ -38,7 +38,6 @@ Future<T> showPopupWindow<T>({
   return Navigator.push(
       context,
       new _PopupWindowRoute(
-          buildContext: context,
           position: position,
           child: child,
           elevation: elevation,
@@ -52,7 +51,6 @@ Future<T> showPopupWindow<T>({
 
 class _PopupWindowRoute<T> extends PopupRoute<T> {
   _PopupWindowRoute({
-    BuildContext buildContext,
     RouteSettings settings,
     this.child,
     this.position,

@@ -18,9 +18,12 @@ dependencies:
   dotted_border:
   flutter_dash:
   recase:
-
-  supercharged:
-  flutter_map_marker_popup:
+  flutter_automation:
+  firebase_auth:
+  firebase_core:
+  google_sign_in:
+  flutter_secure_storage:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:

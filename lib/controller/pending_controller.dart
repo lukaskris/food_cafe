@@ -94,7 +94,8 @@ class PendingController extends GetxController {
           ])
     ];
 
-    rxPendingList = PendingResponse(orderMainList: orderMainList).orderMainList.obs;
+    rxPendingList =
+        PendingResponse(orderMainList: orderMainList).orderMainList.obs;
   }
 
   void preparationTimeSelect(PreparationTimeList preparationTimeList,
@@ -119,27 +120,12 @@ class PendingController extends GetxController {
     isTimeSelect.value = true;
     preparationTimeDefault.selectTime.value = time + 5;
 
-    if (preparationTimeDefault.selectTime.value % 10 == 0) {
-      for (var preparationTime in preparationTimeList) {
-        preparationTime.isSelect.value = false;
-      }
-
-      preparationTimeList[int.parse(
-                  (preparationTimeDefault.selectTime.value / 10)
-                      .toStringAsFixed(0)) -
-              1]
-          .isSelect
-          .value = true;
-    } else {
-      for (var preparationTime in preparationTimeList) {
-        preparationTime.isSelect.value = false;
-      }
-    }
+    _preparationTimeSelectUnselect(preparationTimeList, preparationTimeDefault);
   }
 
   void removeOrder(String orderId) {
     int indexGet =
-    rxPendingList.indexWhere((element) => element.uniqueId == orderId);
+        rxPendingList.indexWhere((element) => element.uniqueId == orderId);
     rxPendingList.removeAt(indexGet);
   }
 
@@ -160,15 +146,28 @@ class PendingController extends GetxController {
             .isSelect
             .value = true;
 
-      if (preparationTimeDefault.selectTime.value % 10 == 0) {
-        for (var preparationTime in preparationTimeList) {
-          preparationTime.isSelect.value = false;
-        }
-      } else {
-        for (var preparationTime in preparationTimeList) {
-          preparationTime.isSelect.value = false;
-        }
-      }
+      _preparationTimeSelectUnselect(
+          preparationTimeList, preparationTimeDefault);
+    }
+  }
+}
+
+//LOGIC PART 1
+void _preparationTimeSelectUnselect(
+    List<PreparationTimeList> preparationTimeList,
+    PreparationTimeDefault preparationTimeDefault) {
+  if (preparationTimeDefault.selectTime.value % 10 == 0) {
+    for (var preparationTime in preparationTimeList) {
+      preparationTime.isSelect.value = false;
+    }
+    preparationTimeList[int.parse((preparationTimeDefault.selectTime.value / 10)
+                .toStringAsFixed(0)) -
+            1]
+        .isSelect
+        .value = true;
+  } else {
+    for (var preparationTime in preparationTimeList) {
+      preparationTime.isSelect.value = false;
     }
   }
 }
