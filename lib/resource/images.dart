@@ -11,3 +11,13 @@ var tabDispatchedIcon = LineIcons.road;
 var navigationIcon = LineIcons.navicon;
 var searchIcon = LineIcons.search;
 var backIcon = LineIcons.arrow_left;
+
+var searchClearIcon = LineIcons.close;
+
+
+var pauseMenuIcon = LineIcons.pause;
+var turnOfOrderingIcon = LineIcons.close;
+var pastOrderIcon = LineIcons.list;
+var newOrderIcon = LineIcons.bell;
+var kdsViewIcon = LineIcons.street_view;
+var logoutIcon = LineIcons.lock;

@@ -1,6 +1,11 @@
 const String appName = 'Food Cafe';
 
 const String titleNewOrder = 'New Order';
+const String titleTurnOfOrdering = 'Turn Of Ordering';
+const String titlePauseMenu = 'Pause Menu';
+const String titlePastOrder = 'Past Order';
+const String titleKDSView = 'KDS View';
+const String titleLogout = 'Logout';
 
 const labelSignUp = "Don't have an account?";
 
@@ -22,7 +27,10 @@ const String foodReadyButton = 'FOOD READY';
 const String settleOrderButton = 'SETTLE ORDER';
 const String acceptButton = 'ACCEPT';
 const String dispatchButton = 'DISPATCH';
+const String cancelButton = 'CANCEL';
+const String okButton = 'OK';
 
+const String hintSearch = 'Search';
 
 const double cardViewElevation = 1.0;
 

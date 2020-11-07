@@ -7,6 +7,7 @@ import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/resource/value.dart';
 import 'package:food_cafe/ui/widget/order_detail.dart';
 import 'package:food_cafe/ui/widget/order_status.dart';
+import 'package:food_cafe/ui/widget/preparation_time.dart';
 import 'package:get/get.dart';
 
 class NewOrderPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class NewOrderPage extends StatelessWidget {
                 icon: Icon(backIcon, size: 18, color: appBarTitleColor)),
             title: Column(
                 children: [Text(titleNewOrder, style: appBarTitleStyle)])),
-        body: ListView.builder(
+        body: Obx(() => ListView.builder(
             itemCount: _newOrderController.rxNewOrderList.length,
             itemBuilder: (context, index) {
               _infoKey.add(GlobalKey(debugLabel: index.toString()));
@@ -37,15 +38,28 @@ class NewOrderPage extends StatelessWidget {
                           children: [
                             OrderDetail(
                                 infoKey: _infoKey[index],
-                                orderMainList: _newOrderController.rxNewOrderList[index],
+                                orderMainList:
+                                    _newOrderController.rxNewOrderList[index],
                                 orderList: _newOrderController
                                     .rxNewOrderList[index].orderList,
                                 otherChargeList: _newOrderController
                                     .rxNewOrderList[index].otherChargeList),
+                            PreparationTime(
+                                index: index,
+                                preparationTimeDefault: _newOrderController
+                                    .rxNewOrderList[index]
+                                    .preparationTimeDefault,
+                                preparationTimeList: _newOrderController
+                                    .rxNewOrderList[index].preparationTimeList),
                             OrderStatus(
-                                orderStatus: dispatchButton,
-                                isRejectShow: false),
+                                orderStatus: acceptButton,
+                                rejectCallBack: () => _newOrderController
+                                    .removeOrder(_newOrderController
+                                        .rxNewOrderList[index].uniqueId),
+                                orderCallBack: () => _newOrderController
+                                    .removeOrder(_newOrderController
+                                        .rxNewOrderList[index].uniqueId))
                           ])));
-            }));
+            })));
   }
 }

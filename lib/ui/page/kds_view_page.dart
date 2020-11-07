@@ -52,7 +52,7 @@ class KDSViewPage extends StatelessWidget {
   Widget itemMenuPause(String menu) {
     return Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
+        padding: EdgeInsets.only(left: 0.0, right: 10.0),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/style.dart';
 
 class PastOrderWidget extends StatelessWidget {
@@ -35,14 +36,18 @@ class PastOrderWidget extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15.0),
                     topRight: Radius.circular(15.0))),
-            child: Column(children: [
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text("ECOM2002", style: id),
-                Text('Delivered', style: pastOrderStatus)
+                Row(children: [
+                  Text('Delivered', style: pastOrderStatus(pastOrderDelivered))
+                ])
               ]),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text("Home delivery", style: deliveryType),
-                Text('10 min ago', style: timeCalculation)
+                Text('08 Oct 2020 - 4:30 PM', style: timeCalculation)
               ]),
               SizedBox(height: 5),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -52,11 +57,16 @@ class PastOrderWidget extends StatelessWidget {
                   Text('(Collect)', style: paymentCollect)
                 ]),
                 Text('\u20B9 6000', style: totalAmount)
+              ]),
+              SizedBox(height: 5),
+              Text("Refundable", style: pastOrderRefundableStyle),
+              Row(children: [
+                Text("Remark", style: pastOrderRemarkStyle),
+                SizedBox(width: 5),
+                Text("Items are not available", style: pastOrderRemarkCommentStyle),
               ])
             ])));
 
-    return Container(
-        margin: EdgeInsets.all(10),
-        child: _dottedLine);
+    return Container(margin: EdgeInsets.all(10), child: _dottedLine);
   }
 }

@@ -46,8 +46,18 @@ var pauseMenuTitleStyle = TextStyle(color: pauseMenuTitleColor,  fontFamily: med
 var switchLabelStyle = TextStyle(color: switchLabelColor,  fontFamily: regularFont, fontSize: 14);
 var menuAvailableStyle = TextStyle(color: menuAvailableColor,  fontFamily: semiBoldFont, fontSize: 12);
 
-var pastOrderStatus = TextStyle(color: Colors.black, fontSize: 12, fontFamily: regularFont);
+pastOrderStatus(Color color) => TextStyle(color: color, fontSize: 12, fontFamily: regularFont);
 var dropDownText = TextStyle(color: Colors.black, fontSize: 14, fontFamily: regularFont);
+var pastOrderRefundableStyle = TextStyle(color: Colors.black, fontSize: 15, fontFamily: mediumFont);
+var pastOrderRemarkStyle = TextStyle(color: Colors.black, fontSize: 14, fontFamily: mediumFont);
+var pastOrderRemarkCommentStyle = TextStyle(color: Colors.black, fontSize: 12, fontFamily: regularFont);
+
+var turnOfOrderingMenuStyle = TextStyle(color: switchLabelColor,  fontFamily: regularFont, fontSize: 15);
+var turnOfOrderingNameStyle = TextStyle(color: switchLabelColor,  fontFamily: mediumFont, fontSize: 15);
+
+var bottomSheetPauseMenuTitle = TextStyle(color: Colors.black, fontSize: 18, fontFamily: mediumFont);
+var bottomSheetPauseMenuDescription = TextStyle(color: Colors.black, fontSize: 15, fontFamily: regularFont);
+var bottomSheetPauseMenuOrderOnOffTimerLabel = TextStyle(color: Colors.black, fontSize: 15, fontFamily: regularFont);
 
 var kdsViewTitleStyle = TextStyle(color: Colors.black, fontSize: 14, fontFamily: regularFont);
 var kdsViewAmountStyle = TextStyle(color: Colors.black, fontSize: 14, fontFamily: mediumFont);

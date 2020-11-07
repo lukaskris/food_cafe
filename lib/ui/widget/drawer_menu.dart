@@ -6,7 +6,6 @@ import 'package:food_cafe/resource/routes.dart';
 import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/resource/value.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:recase/recase.dart';
 
 class DrawerMenu extends StatelessWidget {
@@ -35,42 +34,46 @@ class DrawerMenu extends StatelessWidget {
           subtitle: Text(email.toLowerCase(), style: drawerEmailStyle),
           onTap: () => Get.back()),
       ListTile(
-          leading: Icon(LineIcons.pause, size: 16),
-          title: Text('Pause Menu', style: drawerMenuStyle),
+          leading: Icon(pauseMenuIcon, size: 16),
+          title: Text(titlePauseMenu, style: drawerMenuStyle),
           onTap: () {
             _homeController.currentPageIndex.value = 0;
             _homeController.drawerMenuChange(pauseMenuIndex);
             Get.back();
           }),
       ListTile(
-          leading: Icon(LineIcons.close, size: 16),
-          title: Text('Turn of Ordering', style: drawerMenuStyle)),
+          leading: Icon(turnOfOrderingIcon, size: 16),
+          title: Text(titleTurnOfOrdering, style: drawerMenuStyle),
+          onTap: () {
+            Get.back();
+            Get.toNamed(turnOfOrderingRoute);
+          }),
       ListTile(
-          leading: Icon(LineIcons.list, size: 16),
-          title: Text('Past Order', style: drawerMenuStyle),
+          leading: Icon(pastOrderIcon, size: 16),
+          title: Text(titlePastOrder, style: drawerMenuStyle),
           onTap: () {
             _homeController.currentPageIndex.value = 0;
             _homeController.drawerMenuChange(pastOrder);
             Get.back();
           }),
       ListTile(
-          leading: Icon(LineIcons.bell, size: 16),
-          title: Text('New Order', style: drawerMenuStyle),
+          leading: Icon(newOrderIcon, size: 16),
+          title: Text(titleNewOrder, style: drawerMenuStyle),
           onTap: () {
             Get.back();
             Get.toNamed(newOrderRoute);
           }),
       ListTile(
-          leading: Icon(LineIcons.street_view, size: 16),
-          title: Text('KDS View', style: drawerMenuStyle),
+          leading: Icon(kdsViewIcon, size: 16),
+          title: Text(titleKDSView, style: drawerMenuStyle),
           onTap: () {
             _homeController.currentPageIndex.value = 0;
             _homeController.drawerMenuChange(KDSView);
             Get.back();
           }),
       ListTile(
-          leading: Icon(LineIcons.lock, size: 16),
-          title: Text('Logout', style: drawerMenuStyle),
+          leading: Icon(logoutIcon, size: 16),
+          title: Text(titleLogout, style: drawerMenuStyle),
           onTap: () => _loginController.logout())
     ]));
   }

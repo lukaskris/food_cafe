@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/font.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:food_cafe/resource/images.dart';
+import 'package:food_cafe/resource/value.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class Search extends StatelessWidget {
                 border: InputBorder.none,
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                suffixIcon: Icon(LineIcons.close, size: 20, color: Colors.grey),
+                suffixIcon: Icon(searchClearIcon, size: 20, color: Colors.grey),
                 enabledBorder: OutlineInputBorder(
                     borderRadius:
                         const BorderRadius.all(const Radius.circular(10.0)),
@@ -34,7 +35,7 @@ class Search extends StatelessWidget {
                     fontFamily: regularFont,
                     color: Colors.grey[800],
                     textBaseline: TextBaseline.alphabetic),
-                hintText: 'Search',
+                hintText: hintSearch,
                 fillColor: searchBackgroundColor)));
   }
 }

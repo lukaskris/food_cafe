@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/style.dart';
+import 'package:food_cafe/ui/widget/bottom_sheet_custom.dart';
+import 'package:food_cafe/ui/widget/bottom_sheet_pause_menu.dart';
 import 'package:food_cafe/ui/widget/custom_switch.dart';
 import 'package:food_cafe/ui/widget/search.dart';
+import 'package:get/get.dart';
 
 class PauseMenuPage extends StatelessWidget {
   @override
@@ -31,7 +34,15 @@ class PauseMenuPage extends StatelessWidget {
                                     style: switchLabelStyle),
                                 CustomSwitch(
                                     value: false,
-                                    onChanged: (bool isOn) async {},
+                                    onChanged: (bool isOn) {
+                                      bottomSheetCustom(
+                                          isScrollControlled: true,
+                                          isDismissible: false,
+                                          backgroundColor: Colors.white,
+                                          context: Get.context,
+                                          builder: (context) =>
+                                              BottomSheetPauseMenu());
+                                    },
                                     activeColor: switchActiveColor,
                                     inactiveTrackColor: switchTrackColor,
                                     inactiveThumbColor: switchInActiveColor)
@@ -43,7 +54,15 @@ class PauseMenuPage extends StatelessWidget {
                                     style: switchLabelStyle),
                                 CustomSwitch(
                                     value: false,
-                                    onChanged: (bool isOn) async {},
+                                    onChanged: (bool isOn) {
+                                      bottomSheetCustom(
+                                          isScrollControlled: true,
+                                          isDismissible: false,
+                                          backgroundColor: Colors.white,
+                                          context: Get.context,
+                                          builder: (context) =>
+                                              BottomSheetPauseMenu());
+                                    },
                                     activeColor: switchActiveColor,
                                     inactiveTrackColor: switchTrackColor,
                                     inactiveThumbColor: switchInActiveColor)
@@ -60,11 +79,19 @@ class PauseMenuPage extends StatelessWidget {
                                           style: switchLabelStyle),
                                       Text(
                                           'Available on 1 - March - 2020 4:15 AM',
-                                          style: menuAvailableStyle),
+                                          style: menuAvailableStyle)
                                     ]),
                                 CustomSwitch(
                                     value: false,
-                                    onChanged: (bool isOn) async {},
+                                    onChanged: (bool isOn) {
+                                      bottomSheetCustom(
+                                          isScrollControlled: true,
+                                          isDismissible: false,
+                                          backgroundColor: Colors.white,
+                                          context: Get.context,
+                                          builder: (context) =>
+                                              BottomSheetPauseMenu());
+                                    },
                                     activeColor: switchActiveColor,
                                     inactiveTrackColor: switchTrackColor,
                                     inactiveThumbColor: switchInActiveColor)
@@ -81,15 +108,23 @@ class PauseMenuPage extends StatelessWidget {
                                           style: switchLabelStyle),
                                       Text(
                                           'Available on 1 - March - 2020 4:15 AM',
-                                          style: menuAvailableStyle),
+                                          style: menuAvailableStyle)
                                     ]),
                                 CustomSwitch(
                                     value: false,
-                                    onChanged: (bool isOn) async {},
+                                    onChanged: (bool isOn) {
+                                      bottomSheetCustom(
+                                          isScrollControlled: true,
+                                          isDismissible: false,
+                                          backgroundColor: Colors.white,
+                                          context: Get.context,
+                                          builder: (context) =>
+                                              BottomSheetPauseMenu());
+                                    },
                                     activeColor: switchActiveColor,
                                     inactiveTrackColor: switchTrackColor,
                                     inactiveThumbColor: switchInActiveColor)
-                              ]),
+                              ])
                         ]))
                   ]))),
         ]));

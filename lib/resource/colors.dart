@@ -6,7 +6,7 @@ const appBarAddressColor = Colors.black;
 Color countBackgroundColor = Colors.black.withOpacity(0.3);
 const countColor = Colors.white;
 const appBarColor = Colors.white;
-const linkColor =  Color(0xFFf06c00);
+const linkColor = Color(0xFFf06c00);
 
 List<Color> gradientsButton = [Colors.white, Colors.white];
 
@@ -26,6 +26,15 @@ Color tabUnSelectColor = Colors.black;
 
 const tabLabelColor = Colors.white;
 const tabUnSelectedColor = Colors.white;
+
+const Color pastOrderDelivered = Colors.green;
+const Color pastOrderRejected = Colors.red;
+
+const btnCancelColor = Color(0xFFd7d7d7);
+const btnOkColor = Color(0xFFf06c00);
+
+const radioSelectColor = Color(0xFFf06c00);
+const radioUnselectColor = Colors.grey;
 
 Color searchBorderColor = Colors.grey;
 const searchBackgroundColor = Colors.white;
