@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 const backgroundColor = Colors.white;
+const backgroundPauseMenuColor = Color(0xffF1F2F3);
+
 const appBarTitleColor = Color(0xFFf06c00);
 const appBarAddressColor = Colors.black;
 Color countBackgroundColor = Colors.black.withOpacity(0.3);

@@ -4,7 +4,13 @@ import 'package:food_cafe/resource/font.dart';
 import 'package:food_cafe/resource/images.dart';
 import 'package:food_cafe/resource/value.dart';
 
-class Search extends StatelessWidget {
+class TextFieldSearch extends StatelessWidget {
+  final TextEditingController textEditingController;
+  final ValueChanged<String> onChanged;
+  final VoidCallback callBack;
+
+  TextFieldSearch({this.textEditingController, this.onChanged, this.callBack});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,6 +18,8 @@ class Search extends StatelessWidget {
         height: 50,
         margin: EdgeInsets.all(10),
         child: TextField(
+            controller: textEditingController,
+            onChanged: onChanged,
             textInputAction: TextInputAction.search,
             textCapitalization: TextCapitalization.words,
             cursorColor: appBarTitleColor,
@@ -20,7 +28,9 @@ class Search extends StatelessWidget {
                 border: InputBorder.none,
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                suffixIcon: Icon(searchClearIcon, size: 20, color: Colors.grey),
+                suffixIcon: GestureDetector(
+                    child: Icon(searchClearIcon, size: 20, color: Colors.grey),
+                    onTap: callBack),
                 enabledBorder: OutlineInputBorder(
                     borderRadius:
                         const BorderRadius.all(const Radius.circular(10.0)),

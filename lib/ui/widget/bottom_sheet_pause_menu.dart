@@ -9,6 +9,10 @@ import 'package:get/get.dart';
 import 'pause_menu_order_on_off_timer.dart';
 
 class BottomSheetPauseMenu extends StatelessWidget {
+  final VoidCallback voidCallbackOk;
+
+  BottomSheetPauseMenu({this.voidCallbackOk});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -42,7 +46,7 @@ class BottomSheetPauseMenu extends StatelessWidget {
                 left: 15.0, right: 15.0, top: 10, bottom: 10),
             textColor: Colors.white,
             color: btnOkColor,
-            onPressed: () => Get.back(),
+            onPressed: () => voidCallbackOk(),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
             child: Text(okButton,
