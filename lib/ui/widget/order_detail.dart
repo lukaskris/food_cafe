@@ -22,11 +22,11 @@ class OrderDetail extends StatelessWidget {
     return Column(children: [
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(orderMainList.uniqueId, style: id),
-        Text(orderMainList.dateTime, style: dateTime)
+        Text(orderMainList.dateTime, style: dateTimeStyle)
       ]),
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(orderMainList.typeDelivery, style: deliveryType),
-        Text('10 min ago', style: timeCalculation)
+        Text('10 min ago', style: timeCalculationStyle)
       ]),
       SizedBox(height: 5),
       Column(
@@ -52,8 +52,8 @@ class OrderDetail extends StatelessWidget {
                     Flexible(
                         flex: 700,
                         child: Row(children: [
-                          Text('X', style: quantitySymbol),
-                          Text(item.quantity.toString(), style: quantity)
+                          Text('X', style: quantitySymbolStyle),
+                          Text(item.quantity.toString(), style: quantityStyle)
                         ])),
                     Flexible(
                         flex: 0,
@@ -70,12 +70,12 @@ class OrderDetail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                    Text(orderMainList.paymentType, style: paymentPaidStatus),
+                    Text(orderMainList.paymentType, style: paymentPaidStatusStyle),
                     SizedBox(width: 3),
-                    Text('(Collect)', style: paymentCollect)
+                    Text('(Collect)', style: paymentCollectStyle)
                   ]),
                   Row(children: [
-                    Text(labelTotal, style: totalQuantity),
+                    Text(labelTotal, style: totalQuantityStyle),
                     SizedBox(width: 3),
                     GestureDetector(
                         key: infoKey,
@@ -148,15 +148,15 @@ class OrderDetail extends StatelessWidget {
         Flexible(
             flex: 700,
             child: Row(children: [
-              Text('X', style: quantitySymbol),
-              Text(orderMainList.totalQuantity.toString(), style: quantity)
+              Text('X', style: quantitySymbolStyle),
+              Text(orderMainList.totalQuantity.toString(), style: quantityStyle)
             ])),
         Flexible(
             flex: 0,
             child: Text(
                 '\u20B9 ' +
                     (orderMainList.totalAmount + orderMainList.otherCharge).toString(),
-                style: totalAmount))
+                style: totalAmountStyle))
       ])
     ]);
   }

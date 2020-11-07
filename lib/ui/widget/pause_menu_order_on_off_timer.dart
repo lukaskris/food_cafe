@@ -34,7 +34,7 @@ class RadioListBuilderState extends State<PauseMenuOrderOffTimer> {
                           color: radioUnselectColor),
                   SizedBox(width: 10),
                   Text(timeSlotList[index],
-                      style: bottomSheetPauseMenuOrderOnOffTimerLabel)
+                      style: bottomSheetPauseMenuOrderOnOffTimerLabelStyle)
                 ])));
       },
       itemCount: timeSlotList.length,

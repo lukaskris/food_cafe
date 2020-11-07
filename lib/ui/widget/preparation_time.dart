@@ -20,7 +20,7 @@ class PreparationTime extends StatelessWidget {
   Widget build(BuildContext context) =>
       Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(height: 1),
-        Text('Preparation Time', style: preparationTime),
+        Text('Preparation Time', style: preparationTimeStyle),
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
               children: preparationTimeList
@@ -29,8 +29,8 @@ class PreparationTime extends StatelessWidget {
                           padding: EdgeInsets.all(10),
                           child: Obx(() => Text(item.time.toString(),
                               style: item.isSelect.value
-                                  ? preparationTimeSelect
-                                  : preparationTimeUnSelect))),
+                                  ? preparationTimeSelectStyle
+                                  : preparationTimeUnSelectStyle))),
                       onTap: () {
                         _pendingController.preparationTimeSelect(
                             item, preparationTimeDefault, index);
@@ -55,10 +55,10 @@ class PreparationTime extends StatelessWidget {
                 _pendingController.isTimeSelect.value
                     ? preparationTimeDefault.selectTime.toString()
                     : preparationTimeDefault.defaultTime.toString(),
-                style: preparationTimeUnSelect)),
+                style: preparationTimeUnSelectStyle)),
             SizedBox(width: 2),
              Text(
-                'Min', style: preparationTimeMinHour),
+                'Min', style: preparationTimeMinHourStyle),
             SizedBox(width: 10),
             GestureDetector(
                 child: Container(

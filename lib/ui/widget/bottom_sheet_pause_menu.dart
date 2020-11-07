@@ -18,12 +18,12 @@ class BottomSheetPauseMenu extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(children: [
       SizedBox(height: 20),
-      Text('Chicken Biryani', style: bottomSheetPauseMenuTitle),
+      Text('Chicken Biryani', style: bottomSheetPauseMenuTitleStyle),
       SizedBox(height: 10),
       Text(
           'You will not receive orders for \n this item till day end from now.',
           textAlign: TextAlign.center,
-          style: bottomSheetPauseMenuDescription),
+          style: bottomSheetPauseMenuDescriptionStyle),
       SizedBox(height: 30),
       PauseMenuOrderOffTimer(),
       SizedBox(height: 30),

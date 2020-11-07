@@ -36,7 +36,7 @@ class TurnOfOrderingPage extends StatelessWidget {
                                 children: [
                                   Text('Kamlesh',
                                       style: turnOfOrderingNameStyle),
-                                  Text('11-7-2020 - 1:15 PM', style: dateTime),
+                                  Text('11-7-2020 - 1:15 PM', style: dateTimeStyle),
                                 ]),
                             Text('Chicken biryani',
                                 style: turnOfOrderingMenuStyle),

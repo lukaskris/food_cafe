@@ -22,7 +22,7 @@ class OrderStatus extends StatelessWidget {
                 child: GestureDetector(
                     onTap: rejectCallBack,
                     child: Column(children: [
-                      Text('REJECT', style: orderStatusLink),
+                      Text('REJECT', style: orderStatusLinkStyle),
                       Container(color: Colors.blue, height: 1)
                     ])))
             : Container(),
@@ -30,7 +30,7 @@ class OrderStatus extends StatelessWidget {
         isBillShow
             ? IntrinsicWidth(
                 child: Column(children: [
-                Text('BILL', style: orderStatusLink),
+                Text('BILL', style: orderStatusLinkStyle),
                 Container(color: Colors.blue, height: 1)
               ]))
             : Container()

@@ -42,21 +42,21 @@ class PastOrderWidget extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text("ECOM2002", style: id),
                 Row(children: [
-                  Text('Delivered', style: pastOrderStatus(pastOrderDelivered))
+                  Text('Delivered', style: pastOrderStatusStyle(pastOrderDelivered))
                 ])
               ]),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text("Home delivery", style: deliveryType),
-                Text('08 Oct 2020 - 4:30 PM', style: timeCalculation)
+                Text('08 Oct 2020 - 4:30 PM', style: timeCalculationStyle)
               ]),
               SizedBox(height: 5),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Row(children: [
-                  Text('Paid', style: paymentPaidStatus),
+                  Text('Paid', style: paymentPaidStatusStyle),
                   SizedBox(width: 3),
-                  Text('(Collect)', style: paymentCollect)
+                  Text('(Collect)', style: paymentCollectStyle)
                 ]),
-                Text('\u20B9 6000', style: totalAmount)
+                Text('\u20B9 6000', style: totalAmountStyle)
               ]),
               SizedBox(height: 5),
               Text("Refundable", style: pastOrderRefundableStyle),

@@ -33,7 +33,7 @@ class PastOrderPage extends StatelessWidget {
                         .map((String selectValue) {
                       return new DropdownMenuItem<String>(
                           value: selectValue,
-                          child: Text(selectValue, style: dropDownText));
+                          child: Text(selectValue, style: dropDownTextStyle));
                     }).toList()))),
         Text('Total', style: totalStyle),
         SizedBox(width: 3),
