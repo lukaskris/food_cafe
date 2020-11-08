@@ -1,5 +1,1 @@
-enum StateStatus {
-  INITIAL,
-  LOADING,
-  SUCCESS,
-}
+enum StateStatus { INITIAL, LOADING, SUCCESS }

@@ -7,7 +7,7 @@ import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/ui/widget/bottom_sheet_custom.dart';
 import 'package:food_cafe/ui/widget/bottom_sheet_pause_menu.dart';
 import 'package:food_cafe/ui/widget/custom_switch.dart';
-import 'package:food_cafe/ui/widget/search.dart';
+import 'package:food_cafe/ui/widget/text_field_search.dart';
 import 'package:get/get.dart';
 
 class PauseMenuPage extends StatelessWidget {

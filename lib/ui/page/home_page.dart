@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_cafe/controller/home_controller.dart';
-import 'package:food_cafe/controller/login_controller.dart';
+import 'package:food_cafe/controller/controller.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/images.dart';
 import 'package:food_cafe/resource/style.dart';

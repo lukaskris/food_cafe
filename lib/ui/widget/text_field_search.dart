@@ -9,7 +9,7 @@ class TextFieldSearch extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final VoidCallback callBack;
 
-  TextFieldSearch({this.textEditingController, this.onChanged, this.callBack});
+  TextFieldSearch({@required this.textEditingController, @required this.onChanged, @required this.callBack});
 
   @override
   Widget build(BuildContext context) {

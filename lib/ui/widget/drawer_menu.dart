@@ -72,6 +72,14 @@ class DrawerMenu extends StatelessWidget {
             Get.back();
           }),
       ListTile(
+          leading: Icon(profileIcon, size: 16),
+          title: Text(titleProfile, style: drawerMenuStyle),
+          onTap: () =>  Get.back()),
+          ListTile(
+              leading: Icon(changePasswordIcon, size: 16),
+              title: Text(titleChangePassword, style: drawerMenuStyle),
+              onTap: () =>  Get.back()),
+      ListTile(
           leading: Icon(logoutIcon, size: 16),
           title: Text(titleLogout, style: drawerMenuStyle),
           onTap: () => _loginController.logout())

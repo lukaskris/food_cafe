@@ -69,6 +69,38 @@ extension ValiationExtensions on String {
     }
     return null;
   }
+
+  validateMobile() {
+    String pattern = r'(^[0-9]*$)';
+    RegExp regExp = RegExp(pattern);
+    if (this.replaceAll(" ", "").isEmpty) {
+      return 'Mobile is required';
+    } else if (this.replaceAll(" ", "").length != 10) {
+      return 'Mobile number must 10 digits';
+    } else if (!regExp.hasMatch(this.replaceAll(" ", ""))) {
+      return 'Mobile number must be digits';
+    }
+    return null;
+  }
+
+  String validUserName() {
+    String pattern = r'(^[a-zA-Z]*$)';
+    RegExp regExp = RegExp(pattern);
+    if (this.isEmpty) {
+      return 'Name is required';
+    } else if (!regExp.hasMatch(this)) {
+      return 'Name must be a-z and A-Z';
+    }
+    return null;
+  }
+
+  bool validationEqual(String currentValue, String checkValue) {
+    if (currentValue == checkValue) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 /*
@@ -197,9 +229,7 @@ extension WidgetExtensions on Widget {
           child: RawMaterialButton(
               shape: CircleBorder(),
               onPressed: voidCallback,
-              child: IconShadowWidget(
-                icon,
-              )));
+              child: IconShadowWidget(icon)));
 
   roundCircleButton(
           {IconData iconData,

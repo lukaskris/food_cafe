@@ -38,4 +38,16 @@ class PauseMenuController extends GetxController {
   void isTurnOfOrdering(PauseOrderMenu pauseOrderMenu) {
     pauseOrderMenu.switchCase.value = !pauseOrderMenu.switchCase.value;
   }
+
+  void search(String menuName) {
+
+     for(PauseMenu pauseMenuList in rxPauseMenuList){
+       for(PauseOrderMenu pauseOrderMenuList in pauseMenuList.pauseOrderMenuList){
+         if(pauseOrderMenuList.menuName.value.contains('Chicken biryani')){
+
+         }
+       }
+
+     }
+  }
 }

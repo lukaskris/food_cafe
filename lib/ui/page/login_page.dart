@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_cafe/controller/login_controller.dart';
+import 'package:food_cafe/controller/controller.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/images.dart';
 import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/resource/value.dart';
-import 'package:food_cafe/ui/clipper/login_clipper.dart';
 import 'package:get/get.dart';
 import 'package:food_cafe/utils/extensions.dart';
 import 'package:line_icons/line_icons.dart';
@@ -21,17 +20,21 @@ class _LoginState extends State<LoginPage> {
   final GlobalKey<FormState> _key = GlobalKey();
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
   @override
-  Widget build(BuildContext context) => FancyBackground(
+  Widget build(BuildContext context) =>
+      /*FancyBackground(
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Form(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               key: _key,
-              child: ListView(children: [_formUI()]))));
+              child: ListView(children: [_formUI()]))))*/
+
+      Scaffold(
+          body: Form(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              key: _key,
+              child: ListView(children: [_formUI()])));
 
   _formUI() => Obx(() => Container(
       padding: EdgeInsets.all(20),
@@ -53,7 +56,6 @@ class _LoginState extends State<LoginPage> {
             child: Text(linkForgotPassword, style: loginLinkStyle(linkColor)),
             onPressed: () {}),
         SizedBox(height: 30.0),
-        SizedBox(height: 10.0),
         _socialLogin(),
         SizedBox(height: 20.0),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -61,7 +63,7 @@ class _LoginState extends State<LoginPage> {
           RawMaterialButton(
               padding: EdgeInsets.all(10),
               child: Text(linkSignUp, style: loginLinkStyle(linkColor)),
-              onPressed: () => {})
+              onPressed: () => _loginController.signUpLink())
         ])
       ]);
 
@@ -101,18 +103,18 @@ class _LoginState extends State<LoginPage> {
         widget.socialIcon(
             icon: Icon(LineIcons.facebook, color: Colors.white, size: 25),
             backgroundColor: Colors.blue,
-            voidCallback: () {}),
+            voidCallback: () {})
       ]));
 
   _emailInput() => widget.inputField(
-        _emailController,
+        _loginController.emailController,
         validation: _loginController.isEmailValid,
-        onChanged: _loginController.changeUserName,
+        onChanged: _loginController.changeEmail,
         labelText: hintEmail,
         keyboardType: TextInputType.emailAddress,
       );
 
-  _passwordInput() => widget.inputField(_passwordController,
+  _passwordInput() => widget.inputField(_loginController.passwordController,
       labelText: hintPassword,
       validation: _loginController.isPasswordValid,
       obscureText: _loginController.passwordVisible.value,
@@ -120,7 +122,7 @@ class _LoginState extends State<LoginPage> {
       maxLength: 55,
       inkWell: InkWell(
           child: Icon(_loginController.passwordVisible.value
-              ? Icons.visibility_off
-              : Icons.visibility),
+              ? passwordInVisibleIcon
+              : passwordVisibleIcon),
           onTap: () => _loginController.togglePasswordVisibility()));
 }

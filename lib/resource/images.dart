@@ -11,6 +11,8 @@ var tabDispatchedIcon = LineIcons.road;
 var navigationIcon = LineIcons.navicon;
 var searchIcon = LineIcons.search;
 var backIcon = LineIcons.arrow_left;
+var passwordVisibleIcon = LineIcons.eye;
+var passwordInVisibleIcon = LineIcons.eye_slash;
 
 var searchClearIcon = LineIcons.close;
 
@@ -20,4 +22,6 @@ var turnOfOrderingIcon = LineIcons.close;
 var pastOrderIcon = LineIcons.list;
 var newOrderIcon = LineIcons.bell;
 var kdsViewIcon = LineIcons.street_view;
+var profileIcon = LineIcons.user;
+var changePasswordIcon = LineIcons.eye;
 var logoutIcon = LineIcons.lock;

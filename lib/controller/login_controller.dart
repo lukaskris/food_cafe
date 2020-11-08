@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_cafe/resource/api.dart';
 import 'package:food_cafe/resource/routes.dart';
-import 'package:food_cafe/resource/value.dart';
 import 'package:food_cafe/shared/repository/local_auth_repository.dart';
 import 'package:food_cafe/utils/extensions.dart';
 import 'package:food_cafe/utils/state_status.dart';
@@ -14,6 +13,9 @@ class LoginController extends GetxController {
       Get.find<LocalAuthRepository>();
 
   Rx<StateStatus> stateStatus = StateStatus.INITIAL.obs;
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   String _email = '', _password = '';
 
@@ -27,7 +29,7 @@ class LoginController extends GetxController {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  changeUserName(String value) {
+  changeEmail(String value) {
     _email = value;
   }
 
@@ -46,7 +48,7 @@ class LoginController extends GetxController {
   Future<void> callLogin() async {
     stateStatus.value = StateStatus.LOADING;
 
-   /* _localAuthRepository.setSession(SECURE_STORAGE_USERNAME, developerName);
+    /* _localAuthRepository.setSession(SECURE_STORAGE_USERNAME, developerName);
     _localAuthRepository.setSession(SECURE_STORAGE_EMAIL, developerEmail);
     _localAuthRepository.setSession(SECURE_STORAGE_PROFILE_URL, '');
     _localAuthRepository.setSession(SECURE_STORAGE_TOKEN, '');
@@ -54,7 +56,9 @@ class LoginController extends GetxController {
 */
     stateStatus.value = StateStatus.SUCCESS;
     Get.context.toast(message: 'Email or Password invalid');
-   // Get.offNamed(homeRoute);
+    _clearTextField();
+
+    // Get.offNamed(homeRoute);
   }
 
   Future<void> callGoogleLogin() async {
@@ -87,6 +91,7 @@ class LoginController extends GetxController {
         _localAuthRepository.setSession(SECURE_STORAGE_USER_ID, user.uid);
 
         stateStatus.value = StateStatus.SUCCESS;
+        _clearTextField();
         Get.offNamed(homeRoute);
       }
     }
@@ -121,6 +126,15 @@ class LoginController extends GetxController {
 
     Get.offAllNamed(loginRoute);
   }
+
+  _clearTextField() {
+    if (_email.isNotEmpty || _password.isNotEmpty) {
+      emailController.clear();
+      passwordController.clear();
+    }
+  }
+
+  signUpLink() => Get.toNamed(signUpRoute);
 
   String isPasswordValid(String value) => value.validatePassword();
 

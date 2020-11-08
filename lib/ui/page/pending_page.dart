@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_cafe/controller/pending_controller.dart';
+import 'package:food_cafe/controller/controller.dart';
 import 'package:food_cafe/resource/value.dart';
 import 'package:food_cafe/ui/widget/order_detail.dart';
 import 'package:food_cafe/ui/widget/order_status.dart';

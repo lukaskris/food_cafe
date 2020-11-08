@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_cafe/controller/splash_controller.dart';
+import 'package:food_cafe/controller/controller.dart';
 import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/resource/value.dart';
 import 'package:get/get.dart';

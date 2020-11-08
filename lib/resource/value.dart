@@ -5,6 +5,8 @@ const String titleTurnOfOrdering = 'Turn Of Ordering';
 const String titlePauseMenu = 'Pause Menu';
 const String titlePastOrder = 'Past Order';
 const String titleKDSView = 'KDS View';
+const String titleProfile = 'Profile';
+const String titleChangePassword = 'Change Password';
 const String titleLogout = 'Logout';
 
 const labelSignUp = "Don't have an account?";
@@ -13,7 +15,10 @@ const linkSignUp = 'Sign Up';
 const linkForgotPassword = 'Forgot password';
 
 const hintPassword = 'Password';
+const hintConfirmPassword = 'Confirm password';
 const hintEmail = 'Email';
+const hintUserName = 'Name';
+const hintMobile = 'Mobile';
 
 const labelTotal = 'Total';
 const labelTotalAmount = 'Total amount';

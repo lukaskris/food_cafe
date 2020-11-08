@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_cafe/controller/past_order_controller.dart';
+import 'package:food_cafe/controller/controller.dart';
 import 'package:food_cafe/resource/colors.dart';
 import 'package:food_cafe/resource/style.dart';
 import 'package:food_cafe/ui/widget/past_order_widget.dart';

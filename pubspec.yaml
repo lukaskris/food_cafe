@@ -25,6 +25,7 @@ dependencies:
   flutter_secure_storage:
   cached_network_image:
   flushbar:
+  logger:
 
 dev_dependencies:
   flutter_test:
